@@ -1,0 +1,21 @@
+Several projects have proposed solutions to the problem of autonomous drone landing by
+marking landing pads with various fiducial markers (April Tag, ArUco, or custom markers).\cite{high_velocity_landing}\cite{visual_servoing}\cite{vision_based_x_platform}\cite{wynn}\cite{accurate_landing_UAV_ground_pattern}
+Others use photographic matching between pictures of a landing site captured on takeoff.\cite{drone_landing_unstructured_environments}
+The general trend in these methods is to first navigate near the anticipated landing site via GPS, and then to descend using visual clues to improve on the GPS accuracy,
+with the correct assumption that GPS does not provide a position estimate with sufficiently high resolution to land on a small platform
+(even with a clear view of the sky which provides reliable GPS reception).
+%GPS is even less reliable in indoor environments or in canyons where reception is worse.
+The drones contain one or two fixed cameras to identify markings or landmarks that provide a position estimate for the drone relative to the landing pad or landing site.
+One main challenge in these methods is that,
+since the camera is fixed to the drone body,
+and since the drone modulates its orientation as its main means of positional control,
+the movement of the drone affects the camera's field of view in way that can cause the marker to be lost.
+Further, the markers can eclipse the camera's field of view once the drone gets too close, meaning that the drone may have to finish the landing blind.
+
+Another method employs a more sophisticated workflow that avoids the need for fiducial markers.\cite{rooftop_landing}
+The drone explores an area where a landing should take place, capturing images from a fixed, downward-facing camera.
+The images contain tags specifying the location where they were captured, and then the drone streams them to a nearby
+computer for analysis.
+The system generates disparity maps and feature matches which imitate stereo image processing, and creates a 3D map of the terrain below.
+Sufficiently flat and large areas serve as possible landing sites, and the system chooses one such site for the drone to land at.
+The method is succesful in identifying viable landing sites, but requires a sophisticated ground control station and requires some adjustment before it can run in real time.
