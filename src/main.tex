@@ -1,27 +1,48 @@
 % Preamble
-\documentclass[11pt]{article}
+\documentclass[conference]{IEEEtran}
 
 % Packages
 \usepackage[top=2.54cm, bottom=2.54cm, right=2.54cm, left=2.54cm]{geometry}
 \usepackage{lipsum}
 \usepackage{graphicx}
-\usepackage{xcolor}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{datetime}
 \newdateformat{specialdate}{\twodigit{\THEDAY} \ \monthname[\THEMONTH] \THEYEAR}
-
+\usepackage{mdframed}
 \usepackage[pdfusetitle]{hyperref}
 
-\author{AUTHOR}
-\title{TEMPLATE}
+\author{Joshua Springer \and Marcel Kyas}
+\title{Extending April Tag for Flexible Autonomous Drone Landing}
 \date{\specialdate\today}
 
 \begin{document}
     \maketitle
 
+    \begin{abstract}
+        This project introduces a flexible landing system based on the April Tag\cite{apriltag3_paper} fiducial system.
+        It adds attributes to detected April Tag markers to estimate the pose of landing pads
+        under the assumption that they are positioned level on the ground and marked with April Tags,
+        and other attributes to enable marker tracking via a gimbal-mounted camera.
+        It provides a lightweight April Tag family that allows for marker embedding,
+        so that landing pads can be marked with bundles of several large and small markers,
+        and allowing the landing pads to be continuously recognized from near and far distances.
+        It also addresses the issue of orientation ambiguity in fiducial marker detection
+        and its implications in the context of drone control.
+    \end{abstract}
+
     \section{Introduction}
+    \label{section:introduction}
     \input{sections/introduction.tex}
 
-    \bibliography{main}
-    \bibliographystyle{plain}
+    \section{Related Work}
+    \label{section:related_work}
+    \input{sections/related_work.tex}
+
+    \section{Methods}
+    \label{section:methods}
+    \input{sections/methods.tex}
+
+    \bibliography{references.bib}
+    \bibliographystyle{IEEEtran}
 
 \end{document}

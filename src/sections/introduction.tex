@@ -1,6 +1,34 @@
-This is a document for testing \LaTeX within PyCharm.\cite{small}
+Autonomous landing is one remaining major hurdle in fully autonomous multirotor drone flight.
+Many other tasks such as takeoff, waypoint-to-waypoint flight, and in-flight tasks such as picture-taking have been
+sufficiently automated.
+However, landing is difficult and risky enough that no widespread, autonomous solution is currently available.
+Landing with GPS alone is not reliable because target landing sites are typically small and GPS does not guarantee sufficient accuracy.
+Some projects have proposed autonomous landing methods (see Section \ref{section:related_work})
+that use some combination of different components such as RGB cameras, ultrasonic sensors,
+sophisticated ground control stations, and fiducial markers.
+These methods serve as a proof of concept for the idea of autonomous landing, but have not been widely adopted yet.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/sample.jpg}
-\end{figure}
+This project introduces a flexible landing system based on the April Tag\cite{apriltag3_paper} fiducial system.
+All computation occurs onboard the drone in order to avoid the need for extra data transmission, latency, and a
+sophisticated ground station.
+The method is implemented as a set of ROS modules and can be constrained to a single computational board,
+or distributed to multiple network-connected boards.
+The method assumes a near-level landing pad marked with nested April Tag fiducial markers for reliable, well-tested
+pose estimation that functions over a large range of distances.
+An edited April Tag ROS module adds message attributes for this application and generates position targets
+regardless of the orientation of the markers in the camera frame.
+This gives the option to track the markers using a gimbal-mounted camera,
+increasing the range and reliability of detection over methods that use a fixed, downward-facing camera.
+The method also requires no sensor data on the orientation of the gimbal, which is helpful as many widely-available
+gimbals do not provide this data.
+%Finally, this method is able to abort a landing attempt during unacceptable situations,
+%such as if the drone is blown off course by a gust of wind.
+
+The ability to carry out many missions autonomously, and over long periods of time,
+is essential to widespread integration of drones into industry operations.
+Drones have already provided a cheaper, faster, and less risky alternative to humans in tasks such as
+monitoring ship traffic in seaports\cite{security_integration},
+geological surveys\cite{eit},
+and infrastructure inspection.\cite{maritine_infrastructure_inspection}
+However, they still require human operators for landing, charging, and maintenance at the least.
+Autonomous landing is the key to further enabling fully-autonomous mission cycles requiring minimal attention from human operators.
