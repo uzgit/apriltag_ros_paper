@@ -12,19 +12,21 @@ or depend on a fixed, downward facing camera (limiting the range of behaviors du
 
 \todo[inline]{How do we get from the mentioned methods to april tag? What defines the knowledge gap of \emph{this} paper? What are the properties of a solution to this problem? Why did we chose april tag?}
 
-This project introduces a flexible landing system based on the April Tag\cite{apriltag3_paper} fiducial system.
+{\color{red}This project introduces a flexible landing system which is based on the April Tag\cite{apriltag3_paper} fiducial system
+in order to keep the number of required sensors low - it requires only an RGB camera.
+It uses a gimbal to aim the camera and track the April Tag markers over time, increasing the range and reliability of landing pad identification.
+The method also requires no data describing the orientation of the gimbal, which is helpful as many widely-available
+gimbals do not provide this data.
 All computation occurs onboard the drone in order to avoid the need for extra data transmission, latency, and a
 sophisticated ground station.
+}
 The method is implemented as a set of ROS modules and can be constrained to a single computational board,
 or distributed to multiple network-connected boards.
 The method assumes a near-level landing pad marked with nested April Tag fiducial markers for reliable, well-tested
 pose estimation that functions over a large range of distances.
 An edited April Tag ROS module adds message attributes for this application and generates position targets
 regardless of the orientation of the markers in the camera frame.
-This gives the option to track the markers using a gimbal-mounted camera,
-increasing the range and reliability of detection over methods that use a fixed, downward-facing camera.
-The method also requires no sensor data on the orientation of the gimbal, which is helpful as many widely-available
-gimbals do not provide this data.
+
 %Finally, this method is able to abort a landing attempt during unacceptable situations,
 %such as if the drone is blown off course by a gust of wind.
 
