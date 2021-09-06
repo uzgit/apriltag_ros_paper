@@ -7,6 +7,10 @@ Some projects have proposed autonomous landing methods (see Section \ref{section
 that use some combination of different components such as RGB cameras, ultrasonic sensors,
 sophisticated ground control stations, and fiducial markers.
 These methods serve as a proof of concept for the idea of autonomous landing, but have not been widely adopted yet.
+{\color{red}Additionally, autonomous landing algorithms typically require either the addition of non-standard components (complexifying the drone system),
+or depend on a fixed, downward facing camera (limiting the range of behaviors during which the landing pad can be identified).}
+
+\todo[inline]{How do we get from the mentioned methods to april tag? What defines the knowledge gap of \emph{this} paper? What are the properties of a solution to this problem? Why did we chose april tag?}
 
 This project introduces a flexible landing system based on the April Tag\cite{apriltag3_paper} fiducial system.
 All computation occurs onboard the drone in order to avoid the need for extra data transmission, latency, and a
